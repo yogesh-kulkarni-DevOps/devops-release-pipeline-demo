@@ -107,7 +107,7 @@
 
             <configuration>
                 <changeLogFile>
-                    src/main/resources/db/changelog/db.changelog-master.xml
+                    ../../database/liquibase/db.changelog-master.xml
                 </changeLogFile>
 
                 <url>
