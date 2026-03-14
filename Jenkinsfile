@@ -9,7 +9,7 @@ pipeline {
                 dir('backend-java/employee-service') {
                     script {
                         def mvnHome = tool 'Maven-3.9'
-                        bat "${mvnHome}\\bin\\mvn clean package"
+                        bat "\"${mvnHome}\\bin\\mvn\" clean package"
                     }
                 }
             }
@@ -20,7 +20,7 @@ pipeline {
                 dir('backend-java/employee-service') {
                     script {
                         def mvnHome = tool 'Maven-3.9'
-                        bat "${mvnHome}\\bin\\mvn liquibase:update"
+                        bat "\"${mvnHome}\\bin\\mvn\" liquibase:update"
                     }
                 }
             }
