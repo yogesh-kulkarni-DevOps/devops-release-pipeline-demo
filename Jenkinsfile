@@ -4,16 +4,13 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-
         stage('Build Backend') {
             steps {
                 dir('backend-java/employee-service') {
-                    bat 'mvn clean package'
+                    script {
+                        def mvnHome = tool 'Maven-3.9'
+                        bat "${mvnHome}\\bin\\mvn clean package"
+                    }
                 }
             }
         }
@@ -21,11 +18,13 @@ pipeline {
         stage('Run Database Migration') {
             steps {
                 dir('backend-java/employee-service') {
-                    bat 'mvn liquibase:update'
+                    script {
+                        def mvnHome = tool 'Maven-3.9'
+                        bat "${mvnHome}\\bin\\mvn liquibase:update"
+                    }
                 }
             }
         }
 
     }
-
 }
